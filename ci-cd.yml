@@ -1,0 +1,35 @@
+name: CI/CD Pipeline
+
+# Triggers the workflow on push or pull request events to the "main" branch
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that run in parallel or sequentially
+jobs:
+  # This job's name is "build-and-test"
+  build-and-test:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks out your repository under $GITHUB_WORKSPACE, so your workflow can access it
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Sets up a Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Specify the Node.js version you want to use
+
+      # Installs dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Runs the tests defined in your package.json
+      - name: Run tests
+        run: npm test
