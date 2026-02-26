@@ -1,0 +1,77 @@
+.game-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+  text-decoration: none;
+  color: var(--foreground);
+  border-radius: 1rem;
+  border: 2px solid var(--border-color);
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+
+  box-shadow:
+    0px 4px 0px var(--shadow-color),
+    0px 6px 10px rgba(0, 0, 0, 0.45),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.4),
+    inset 0px -1px 0px rgba(0, 0, 0, 0.15);
+
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.45);
+
+  transition: all 0.1s ease;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  appearance: none;
+  outline: none;
+}
+
+.game-button:active {
+  top: 2px;
+  box-shadow:
+    0px 2px 0px var(--shadow-color),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.4);
+}
+
+/* Green */
+.game-button.green {
+  --bg-top: #55bca0;
+  --bg-bottom: #235e4a;
+  --border-color: #123326;
+  --shadow-color: #0d261c;
+}
+
+/* Purple */
+.game-button.purple {
+  --bg-top: #c576eb;
+  --bg-bottom: #7828a8;
+  --border-color: #401061;
+  --shadow-color: #27063d;
+}
+
+/* Gold */
+.game-button.gold {
+  --bg-top: #f5e69d;
+  --bg-bottom: #d19f3d;
+  --border-color: #754e18;
+  --shadow-color: #52340e;
+}
+
+/* --- Icon Wrapper --- */
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: inherit;
+  flex-shrink: 0;
+}

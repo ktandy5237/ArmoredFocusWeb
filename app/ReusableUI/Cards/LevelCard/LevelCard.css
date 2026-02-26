@@ -1,0 +1,126 @@
+/* --- Header Section --- */
+.level-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  min-width: 300px;
+  padding-bottom: 0.5rem;
+}
+
+/* The Box around "LEVEL" */
+.level-box {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  border: 2px solid var(--hubBorder);
+  border-radius: 0.25rem;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--foreground);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.level-label {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--hubLightColor);
+  height: 1.75rem;
+  align-self: flex-end;
+}
+
+.level-number {
+  font-size: 1.75rem;
+}
+
+/* Name Section */
+.player-name {
+  font-size: 1.25rem;
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.edit-icon {
+  color: var(--hubBorder);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.edit-icon:hover {
+  opacity: 1;
+}
+
+/* --- Divider --- */
+.level-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--hubBorder);
+  opacity: 0.5;
+}
+
+/* --- Stats Section --- */
+.level-stats {
+  padding: 0.75rem 0.25rem;
+  padding-bottom: 0rem;
+  background-color: var(--hubDarkColor);
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.xp-labels {
+  display: flex;
+  justify-content: space-between;
+  color: var(--hubLightColor);
+  font-weight: bold;
+  font-size: 0.7rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+/* Progress Bar */
+.progress-bar-track {
+  width: 100%;
+  height: 20px;
+  background-color: var(--background);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0.25rem;
+  border: 1px solid var(--hubDarkColor);
+
+  box-shadow:
+    inset 0 4px 8px rgba(0, 0, 0, 0.6),
+    inset 0 2px 3px rgba(0, 0, 0, 0.8);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: inherit;
+
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.25) 0%,
+      transparent 40%,
+      transparent 60%,
+      rgba(0, 0, 0, 0.5) 100%
+    ),
+    linear-gradient(90deg, var(--hubColor), var(--hubBorder));
+
+  box-shadow: inset 1px 1px 3px rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
+}
+
+.xp-footer-text {
+  text-align: center;
+  color: var(--hubLightColor);
+  font-weight: bold;
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  margin: 0;
+}

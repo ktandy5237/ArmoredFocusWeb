@@ -1,0 +1,148 @@
+.binder-page {
+  background: var(--binderBackground);
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.binder-card-color {
+  background: var(--binderColor);
+  border: 4px solid var(--binderBorder);
+  border-radius: 15px;
+  box-shadow:
+    inset 0 0 20px rgba(0, 0, 0, 0.6),
+    10px 10px 25px rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  min-height: 80vh;
+  width: 95%;
+  max-width: 1200px;
+  position: relative;
+  overflow: visible;
+}
+
+.binder-card-color::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 10%;
+  bottom: 10%;
+  width: 20px;
+  background-image: radial-gradient(
+    circle,
+    var(--binderDarkColor) 40%,
+    transparent 45%
+  );
+  background-size: 100% 100px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+  perspective: 1000px;
+}
+
+.binder-slot {
+  aspect-ratio: 2.5 / 3.5;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.binder-slot:hover {
+  transform: translateY(-8px) rotateX(5deg);
+  background: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.binder-card-color::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 10%;
+  bottom: 10%;
+  width: 20px;
+  background-image: radial-gradient(
+    circle,
+    var(--binderDarkColor) 40%,
+    transparent 45%
+  );
+  background-size: 100% 100px;
+  filter: drop-shadow(0px 1px 1px rgba(255, 255, 255, 0.5));
+  z-index: 1;
+}
+
+.binder-card-color::after {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 10%;
+  bottom: 10%;
+  width: 55px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 40%,
+    #d1d5db 40%,
+    #8e9eab 45%,
+    #737d8a 50%,
+    #8e9eab 55%,
+    #d1d5db 60%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 100% 100px;
+
+  border-radius: 1.25rem;
+  border-left: 0.5rem solid #a9b9c5;
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.5));
+}
+
+.card-grid {
+  margin-left: 40px;
+}
+
+.binder-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+  padding-left: 20px;
+}
+
+.binder-title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.binder-main-title {
+  font-family: var(--font-serif), serif;
+  font-size: 3rem;
+  color: var(--foreground);
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+.binder-subtitle {
+  font-family: var(--font-serif), serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: rgba(237, 237, 237, 0.7);
+  margin: 0;
+  font-weight: 400;
+}
+
+.binder-header > :last-child {
+  width: 300px;
+}

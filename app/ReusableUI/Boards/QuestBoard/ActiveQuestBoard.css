@@ -1,0 +1,79 @@
+.quest-board-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.quest-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quest-icon {
+  color: var(--board-theme);
+}
+
+.quest-header h2 {
+  font-family: var(--font-sans, sans-serif);
+  font-weight: 800;
+  font-size: 1.25rem;
+  margin: 0;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.date-badge {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--board-border);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+
+.quest-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  width: 100%;
+  min-height: 180px;
+
+  background: color-mix(in srgb, var(--board-theme), transparent 90%);
+  border: 2px dashed var(--board-border);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.empty-title {
+  font-family: var(--font-sans, sans-serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--board-theme);
+  margin: 0 0 0.5rem 0;
+}
+
+.empty-subtitle {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.95rem;
+  color: var(--textMuted, #94a3b8);
+  margin: 0;
+  max-width: 400px;
+  line-height: 1.5;
+}

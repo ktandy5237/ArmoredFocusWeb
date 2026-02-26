@@ -1,0 +1,66 @@
+.hit-rate-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.5rem 0.125rem;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--hubBorder);
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.card-header h1 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+  padding: 0;
+  color: var(--foreground);
+}
+
+.header-icon {
+  color: var(--accentCyan);
+}
+
+.rate-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.25rem 0.25rem;
+}
+
+.rate-label {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--textMuted);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.rate-number {
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-family: var(--font-mono);
+  margin: 0;
+}
+
+.value-targeted {
+  color: var(--accentSuccess);
+  text-shadow: 0 0 10px rgba(52, 211, 153, 0.4);
+}
+
+.value-idle {
+  color: var(--accentIdle);
+}

@@ -1,0 +1,62 @@
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  padding-top: 0.5rem;
+  padding-left: 2rem;
+  width: 100%;
+  gap: 0.5rem;
+  border-bottom: solid 3px var(--hubBorder);
+}
+
+.nav-container button {
+  font-family: var(--font-serif), serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  padding: 1rem 2rem;
+  color: var(--hubBorder);
+  background: var(--hubColor);
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border: solid 2px var(--hubBorder);
+  border-top: solid 3px var(--hubBorder);
+  border-bottom: none;
+  margin-bottom: -1px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.nav-container button:hover {
+  cursor: pointer;
+  filter: brightness(1.2);
+  z-index: 5;
+}
+
+button.quest-nav-button {
+  color: var(--questBorder);
+  background: var(--questColor);
+  border-color: var(--questBorder);
+}
+
+button.binder-nav-button {
+  color: var(--binderBorder);
+  background: var(--binderColor);
+  border-color: var(--binderBorder);
+}
+
+button.rules-nav-button {
+  color: var(--rulesBorder);
+  background: var(--rulesColor);
+  border-color: var(--rulesBorder);
+}
+
+button.nav-button-selected {
+  z-index: 10;
+  padding-bottom: 1.2rem;
+  margin-bottom: -3px;
+}
+button.nav-button-selected:hover {
+  filter: none;
+}
