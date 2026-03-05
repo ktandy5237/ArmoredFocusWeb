@@ -1585,34 +1585,11 @@ export default function App() {
 
         {/* BINDER VIEW */}
         {view === 'binder' && (
-            <div>
-                <div className="flex justify-between items-end mb-6 border-b-4 border-purple-900/30 pb-4">
-                    <div className="flex items-center gap-4">
-                        <div className={`flex flex-col gap-2 border-r-4 border-stone-400 pr-4 ${BINDER_THEME.spine} p-2 rounded-l-lg`}>{[...Array(3)].map((_,i) => (<div key={i} className={`w-4 h-4 rounded-full ${BINDER_THEME.ring} shadow-sm border border-stone-500`}></div>))}</div>
-                        <div><h2 className="text-4xl font-serif font-bold text-purple-100 drop-shadow-md">The Binder</h2><p className={`text-purple-200/80 italic`}>Repository of Known Associates</p></div>
-                    </div>
-                    <div className="flex gap-2">
-                        <button onClick={() => initBooster()} className={`group flex items-center px-4 py-2 rounded-xl bg-gradient-to-b from-pink-400 via-pink-600 to-pink-800 text-white border-4 border-pink-900 hover:brightness-110 active:scale-95 transition-all ${METALLIC_SHADOW} ${METALLIC_FONT}`}><div className="p-1 bg-pink-950 rounded-full border border-pink-400 group-hover:scale-110 transition-transform mr-2 shadow-inner"><Upload size={14}/></div> Add Booster Pack</button>
-                        <button onClick={() => handleDrawCard('Client')} className={`group flex items-center px-4 py-2 rounded-xl bg-gradient-to-b from-[#faeebf] via-[#eebb4d] to-[#aa7e22] text-[#3e2723] border-4 border-[#5c3a1e] hover:brightness-110 active:scale-95 transition-all ${METALLIC_SHADOW} ${METALLIC_FONT}`}><div className="p-1 bg-[#5c3a1e] rounded-full border border-[#faeebf] group-hover:scale-110 transition-transform mr-2 text-[#faeebf] shadow-inner"><Layers size={14}/></div> Draw New Card</button>
-                    </div>
-                </div>
-
-                <div className="mb-6 flex gap-4 bg-purple-900/30 p-4 rounded-xl border-2 border-purple-500/30 backdrop-blur-sm items-center">
-                    <div className="relative flex-1">
-                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" size={18}/>
-                        <input className="w-full pl-10 pr-4 py-2 bg-white border border-stone-300 rounded focus:outline-none focus:border-purple-500 text-stone-900 placeholder-stone-400" placeholder="Search by Name, Phone, Address..." value={search} onChange={(e) => setSearch(e.target.value)}/>
-                    </div>
-                    <div className="relative">
-                        <button onClick={() => setIsSortMenuOpen(!isSortMenuOpen)} className={`flex items-center gap-2 bg-gradient-to-b from-orange-400 via-orange-600 to-red-700 text-white border-4 border-red-900 px-3 py-2 rounded-xl hover:brightness-110 transition-all shadow-sm ${METALLIC_SHADOW} ${METALLIC_FONT}`}><List size={14}/> Organize By: {sort}</button>
-                        {isSortMenuOpen && (<div className="absolute right-0 top-full mt-2 w-64 bg-[#fdfbf7] border-2 border-[#d4c5a9] rounded-lg shadow-xl z-50 overflow-hidden">{['Alphabetical', 'Due Date', 'Client Side', 'Business Side', 'CoI', 'BNI', 'Relationship Score', 'Farmers First', 'Life First', 'Exp Earned', 'Commission Earned'].map(opt => (<button key={opt} onClick={() => { setSort(opt); setIsSortMenuOpen(false); }} className={`w-full text-left px-4 py-2 hover:bg-[#e8e4d9] text-[#2c241b] text-sm font-serif font-bold border-b border-stone-100 last:border-0 flex justify-between items-center ${sort === opt ? 'bg-[#e8e4d9] text-[#8b4513]' : ''}`}>{opt}{sort === opt && <CheckCircle size={12} className="text-emerald-600"/>}</button>))}</div>)}
-                    </div>
-                </div>
-
-                <div className="space-y-2">
-                    {sortedClients.map(client => (<ClientCard key={client.id} client={client} isExpanded={expandedCardId === client.id} onToggle={() => setExpandedCardId(expandedCardId === client.id ? null : client.id)} onUpdate={handleUpdateClient} />))}
-                    {clients.length === 0 && (<div className="text-center py-12 opacity-50 text-purple-200"><Book size={64} className="mx-auto mb-4 opacity-80"/><h3 className="text-xl font-bold">Binder Empty</h3><p>No cards collected yet.</p></div>)}
-                </div>
-            </div>
+            <BinderView
+            clients={clients}
+            expandedCardId={expandedCardId}
+            setExpandedCardId={setExpandedCardId}
+            />
         )}
 
         {/* QUEST SCREEN */}
@@ -1757,110 +1734,26 @@ export default function App() {
 
       {/* 1. Draw Card Modal */}
       {modals.drawCard && (
-          <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[100] backdrop-blur-sm">
-              <div className="bg-[#fdfbf7] w-full max-w-4xl rounded-lg shadow-2xl border-4 border-[#d4c5a9] max-h-[90vh] overflow-y-auto">
-                  <div className="bg-[#2c241b] text-[#f5deb3] p-4 border-b border-[#d4c5a9] flex justify-between items-center">
-                      <h3 className="font-serif font-bold text-xl">Draw New Card</h3>
-                      <button onClick={() => setModals({...modals, drawCard: false})}><X/></button>
-                  </div>
-                  <div className="p-6 space-y-4">
-                      {/* Side Selection */}
-                      <div className="flex gap-4 mb-4">
-                           <button onClick={() => setNewCardData({...newCardData, primarySide: 'Client'})} className={`flex-1 py-3 font-bold border-2 rounded ${newCardData.primarySide === 'Client' ? 'border-emerald-600 bg-emerald-50 text-emerald-800' : 'border-stone-200 text-stone-400'}`}>Client Side (Front)</button>
-                           <button onClick={() => setNewCardData({...newCardData, primarySide: 'Business'})} className={`flex-1 py-3 font-bold border-2 rounded ${newCardData.primarySide === 'Business' ? 'border-blue-600 bg-blue-50 text-blue-800' : 'border-stone-200 text-stone-400'}`}>Business Side (Back)</button>
-                      </div>
-                      <p className="text-xs text-center font-bold text-stone-500 italic mb-2">The selected tab above determines which side will be the PRIMARY side when added to the binder.</p>
-                      
-                      <div className="grid grid-cols-2 gap-8">
-                          {/* Client Side Column */}
-                          <div className={`space-y-4 p-4 rounded border-2 ${newCardData.primarySide === 'Client' ? 'border-emerald-500 bg-emerald-50/50' : 'border-stone-200 bg-stone-50/50 grayscale opacity-70'}`}>
-                              <h4 className="font-bold text-lg text-emerald-800 border-b border-emerald-200 pb-2 mb-2 flex items-center gap-2">
-                                  <UserPlus size={18}/> Client Details
-                              </h4>
-                              
-                              <div><label className="text-xs font-bold uppercase text-stone-500">Name</label><input className="w-full border p-2 rounded bg-white" value={newCardData.name} onChange={e => setNewCardData({...newCardData, name: e.target.value})} placeholder="Primary Client Name"/></div>
-                              <div><label className="text-xs font-bold uppercase text-stone-500">Phone</label><input className="w-full border p-2 rounded bg-white" value={newCardData.phone} onChange={e => setNewCardData({...newCardData, phone: e.target.value})} placeholder="Personal Phone"/></div>
-                              <div><label className="text-xs font-bold uppercase text-stone-500">Email</label><input className="w-full border p-2 rounded bg-white" value={newCardData.email} onChange={e => setNewCardData({...newCardData, email: e.target.value})} /></div>
-                              <div><label className="text-xs font-bold uppercase text-stone-500">Address</label><input className="w-full border p-2 rounded bg-white" value={newCardData.address} onChange={e => setNewCardData({...newCardData, address: e.target.value})} /></div>
-                              
-                              <div className="grid grid-cols-2 gap-2">
-                                  <div><label className="text-xs font-bold uppercase text-stone-500">DOB</label><input className="w-full border p-2 rounded bg-white" type="date" value={newCardData.dob} onChange={e => setNewCardData({...newCardData, dob: e.target.value})} /></div>
-                                  <div><label className="text-xs font-bold uppercase text-stone-500">License #</label><input className="w-full border p-2 rounded bg-white" value={newCardData.license} onChange={e => setNewCardData({...newCardData, license: e.target.value})} /></div>
-                              </div>
-                              
-                              <div><label className="text-xs font-bold uppercase text-stone-500">Residence</label>
-                                  <select className="w-full border p-2 rounded bg-white" value={newCardData.residenceType} onChange={e => setNewCardData({...newCardData, residenceType: e.target.value})}>
-                                          <option>Homeowner</option><option>Rent</option><option>Other</option>
-                                  </select>
-                              </div>
-
-                              {/* Client LoB Selection */}
-                              <div className="mt-4">
-                                  <label className="text-xs font-bold uppercase text-stone-500 block mb-1">Client Lines of Business</label>
-                                  <div className="grid grid-cols-2 gap-1 border p-2 bg-white rounded">
-                                      {CLIENT_LOB_OPTIONS.map(lob => (
-                                          <label key={lob} className="flex items-center gap-1 text-[10px]"><input type="checkbox" checked={newCardData.clientSide.lob.includes(lob)} onChange={() => toggleNewCardItem('Client', 'lob', lob)}/> {lob}</label>
-                                      ))}
-                                  </div>
-                              </div>
-                              <div className="mt-2">
-                                  <label className="text-xs font-bold uppercase text-stone-500 block mb-1">Client Carriers</label>
-                                  <div className="grid grid-cols-2 gap-1 border p-2 bg-white rounded">
-                                      {CLIENT_CARRIER_OPTIONS.map(c => (
-                                          <label key={c} className="flex items-center gap-1 text-[10px]"><input type="checkbox" checked={newCardData.clientSide.carriers.includes(c)} onChange={() => toggleNewCardItem('Client', 'carriers', c)}/> {c}</label>
-                                      ))}
-                                  </div>
-                              </div>
-                          </div>
-
-                          {/* Business Side Column */}
-                          <div className={`space-y-4 p-4 rounded border-2 ${newCardData.primarySide === 'Business' ? 'border-blue-500 bg-blue-50/50' : 'border-stone-200 bg-stone-50/50 grayscale opacity-70'}`}>
-                              <h4 className="font-bold text-lg text-blue-800 border-b border-blue-200 pb-2 mb-2 flex items-center gap-2">
-                                  <Briefcase size={18}/> Business Details
-                              </h4>
-
-                              <div><label className="text-xs font-bold uppercase text-stone-500">Business Name</label><input className="w-full border p-2 rounded bg-white" value={newCardData.businessSide.businessName} onChange={e => setNewCardData({...newCardData, businessSide: {...newCardData.businessSide, businessName: e.target.value}})} placeholder="Company Name"/></div>
-                              <div><label className="text-xs font-bold uppercase text-stone-500">Business Phone</label><input className="w-full border p-2 rounded bg-white" value={newCardData.businessSide.phone} onChange={e => setNewCardData({...newCardData, businessSide: {...newCardData.businessSide, phone: e.target.value}})} placeholder="Work Phone"/></div>
-                              <div><label className="text-xs font-bold uppercase text-stone-500">EIN</label><input className="w-full border p-2 rounded bg-white" value={newCardData.businessSide.ein} onChange={e => setNewCardData({...newCardData, businessSide: {...newCardData.businessSide, ein: e.target.value}})} /></div>
-                              <div><label className="text-xs font-bold uppercase text-stone-500">Occupancy</label>
-                                    <select className="w-full border p-2 rounded bg-white" value={newCardData.businessSide.occupancy} onChange={e => setNewCardData({...newCardData, businessSide: {...newCardData.businessSide, occupancy: e.target.value}})}>
-                                            <option>Own</option><option>Lease</option><option>Other</option>
-                                    </select>
-                              </div>
-                              <div><label className="text-xs font-bold uppercase text-stone-500">Est.</label><input className="w-full border p-2 rounded bg-white" value={newCardData.businessSide.established} onChange={e => setNewCardData({...newCardData, businessSide: {...newCardData.businessSide, established: e.target.value}})} placeholder="Year"/></div>
-
-                              {/* Business LoB Selection */}
-                              <div className="mt-4">
-                                  <label className="text-xs font-bold uppercase text-stone-500 block mb-1">Business Lines</label>
-                                  <div className="grid grid-cols-2 gap-1 border p-2 bg-white rounded">
-                                      {BUSINESS_LOB_OPTIONS.map(lob => (
-                                          <label key={lob} className="flex items-center gap-1 text-[10px]"><input type="checkbox" checked={newCardData.businessSide.lob.includes(lob)} onChange={() => toggleNewCardItem('Business', 'lob', lob)}/> {lob}</label>
-                                      ))}
-                                  </div>
-                              </div>
-                              <div className="mt-2">
-                                  <label className="text-xs font-bold uppercase text-stone-500 block mb-1">Business Carriers</label>
-                                  <div className="grid grid-cols-2 gap-1 border p-2 bg-white rounded">
-                                      {BUSINESS_CARRIER_OPTIONS.map(c => (
-                                          <label key={c} className="flex items-center gap-1 text-[10px]"><input type="checkbox" checked={newCardData.businessSide.carriers.includes(c)} onChange={() => toggleNewCardItem('Business', 'carriers', c)}/> {c}</label>
-                                      ))}
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-
-                      <div className="flex gap-4 border-t pt-4">
-                          <label className="flex items-center gap-2 text-sm font-bold"><input type="checkbox" checked={newCardData.isCOI} onChange={e => setNewCardData({...newCardData, isCOI: e.target.checked})}/> COI (Center of Influence)</label>
-                          <label className="flex items-center gap-2 text-sm font-bold"><input type="checkbox" checked={newCardData.isBNI} onChange={e => setNewCardData({...newCardData, isBNI: e.target.checked})}/> BNI Member</label>
-                      </div>
-
-                      <div className="flex justify-end pt-4 border-t border-stone-200">
-                          <RPGButton variant="gold" onClick={saveNewCard}>Add to Binder</RPGButton>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      )}
+        <DrawCardModal
+            onClose={() => setModals(m => ({ ...m, drawCard: false }))}
+            onSave={(newClient) => {
+            // Award XP, add log, etc.
+            setClients(prev => [...prev, newClient]);
+            setDailyLog(prev => [
+                {
+                id: generateId(),
+                clientName: newClient.name || newClient.businessSide?.businessName,
+                questType: 'New Card Drawn',
+                exp: rules.general.find((r: any) => r.name === 'New Card Drawn')?.value || 25,
+                date: new Date().toISOString(),
+                },
+                ...prev,
+            ]);
+            setModals(m => ({ ...m, drawCard: false }));
+            }}
+            rules={rules}
+        />  
+        )}
       
       {/* 2. Booster Pack Modal */}
       {modals.boosterPack && (
