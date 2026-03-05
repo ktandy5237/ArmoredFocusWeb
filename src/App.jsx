@@ -1973,81 +1973,19 @@ export default function App() {
       )}
       
       {/* 4. Start Quest Modal */}
-      {modals.startQuest && (
-          <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[100] backdrop-blur-sm">
-              <div className="bg-[#fdfbf7] w-full max-w-lg rounded-lg shadow-2xl border-4 border-[#d4c5a9] max-h-[90vh] overflow-y-auto">
-                  <div className="bg-[#2c241b] text-[#f5deb3] p-4 border-b border-[#d4c5a9] flex justify-between items-center">
-                      <h3 className="font-serif font-bold text-xl">{isStandaloneCreation ? 'Start Standalone Quest' : 'Start New Quest'}</h3>
-                      <button onClick={() => setModals({...modals, startQuest: false})}><X/></button>
-                  </div>
-                  <div className="p-6">
-                      <p className="text-sm text-stone-600 mb-4 font-bold">
-                        {isStandaloneCreation ? 
-                          'Create a temporary task separate from the binder.' : 
-                          <>Client: <span className="text-[#8b4513]">{selectedClient?.name}</span> ({activeSide})</>
-                        }
-                      </p>
-                      
-                      <div className="mb-4">
-                          <label className="block text-xs font-bold text-stone-500 uppercase mb-1">Quest Type</label>
-                          <select className="w-full p-2 border border-[#d4c5a9] rounded bg-white" id="questTypeSelect">
-                              {isStandaloneCreation ? 
-                                rules.standaloneQuestTypes.map(qt => <option key={qt.id} value={JSON.stringify(qt)}>{qt.name}</option>) :
-                                rules.cardQuestTypes.filter(q => q.category !== 'Standalone').map(qt => <option key={qt.id} value={JSON.stringify(qt)}>{qt.name}</option>)
-                              }
-                          </select>
-                      </div>
-
-                      {isStandaloneCreation && (
-                        <div className="mb-4">
-                            <label className="block text-xs font-bold text-stone-500 uppercase mb-1">Note (Required)</label>
-                            <textarea 
-                              className="w-full p-2 border border-[#d4c5a9] rounded bg-white h-24 text-sm" 
-                              placeholder="Describe this task..."
-                              value={standaloneNote}
-                              onChange={(e) => setStandaloneNote(e.target.value)}
-                            />
-                        </div>
-                      )}
-                      
-                      <div className="mb-6">
-                          <label className="block text-xs font-bold text-stone-500 uppercase mb-1">Due Date</label>
-                          <input type="date" id="questDueDate" className="w-full p-2 border border-[#d4c5a9] rounded bg-white" />
-                      </div>
-
-                      {/* Notes Field (NEW) */}
-                      {!isStandaloneCreation && (
-                          <div className="mb-4">
-                              <label className="block text-xs font-bold text-stone-500 uppercase mb-1">Quest Note</label>
-                              <textarea 
-                                  className="w-full p-2 border border-[#d4c5a9] rounded bg-white h-20 text-sm" 
-                                  placeholder="Initial notes..."
-                                  value={startQuestNote}
-                                  onChange={(e) => setStartQuestNote(e.target.value)}
-                              />
-                          </div>
-                      )}
-
-                      <div className="flex justify-end gap-2">
-                          <button onClick={() => setModals({...modals, startQuest: false})} className="px-4 py-2 text-stone-500 font-bold">Cancel</button>
-                          <RPGButton variant="action" onClick={() => {
-                              const selectEl = document.getElementById('questTypeSelect');
-                              const dateEl = document.getElementById('questDueDate');
-                              const selectedQuest = JSON.parse(selectEl.value);
-                              
-                              if (isStandaloneCreation) {
-                                if (!standaloneNote.trim()) return alert("Please enter a note for this standalone quest.");
-                                handleCreateStandaloneQuest(selectedQuest, dateEl.value || new Date().toISOString(), standaloneNote);
-                              } else {
-                                handleStartQuest(selectedClient, activeSide, selectedQuest, dateEl.value || new Date().toISOString(), startQuestNote);
-                              }
-                              setModals({...modals, startQuest: false});
-                          }}>Begin Quest</RPGButton>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      )}
+      // When opening the modal (e.g. from Hub or ClientCard)
+    {modals.startQuest && (
+    <StartQuestModal
+        isStandalone={isStandaloneCreation}           // boolean from your state
+        client={selectedClient}                       // undefined if standalone
+        side={activeSide}                             // undefined if standalone
+        onClose={() => setModals(m => ({ ...m, startQuest: false }))}
+        rules={rules}
+        setClients={setClients}
+        setDailyLog={setDailyLog}
+        setUserStats={setUserStats}
+    />
+    )}
 
     </div>
   );

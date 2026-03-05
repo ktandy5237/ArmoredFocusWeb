@@ -5,9 +5,10 @@ import {
   Book, Layers
 } from 'lucide-react';
 
-import { RPGButton } from '@/components/RPGButton';
-import { BINDER_THEME } from '@/lib/theme';
-import { formatPhoneNumber } from '@/lib/utils';
+import { RPGButton } from '@/src/components/ui/RPGButton';
+import { BINDER_THEME } from '@/src/lib/theme';
+import { formatPhoneNumber } from '@/src/lib/utils';
+import ClientCard from '@/src/components/ClientCard/ClientCard';
 
 // ────────────────────────────────────────────────
 //   MAIN BINDER VIEW
@@ -69,6 +70,18 @@ export default function BinderView({
 
     return list;
   }, [clients, search, sort]);
+
+    function handleUpdateClient(updatedClient: any): void {
+        throw new Error('Function not implemented.');
+    }
+
+    function setSelectedClient(c: any) {
+        throw new Error('Function not implemented.');
+    }
+
+    function setModals(arg0: (m: any) => any) {
+        throw new Error('Function not implemented.');
+    }
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -169,14 +182,15 @@ export default function BinderView({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {sortedAndFilteredClients.map(client => (
             <ClientCard
-              key={client.id}
-              client={client}
-              isExpanded={expandedCardId === client.id}
-              onToggle={() => setExpandedCardId(expandedCardId === client.id ? null : client.id)}
-              onUpdate={(updated) => {
-                // Placeholder - you'll connect real update logic later
-                console.log('Update client:', updated);
-              }}
+                key={client.id}
+                client={client}
+                isExpanded={expandedCardId === client.id}
+                onToggle={() => setExpandedCardId(expandedCardId === client.id ? null : client.id)}
+                onUpdate={handleUpdateClient}           // from App or parent
+                onMerge={(c) => {
+                    setSelectedClient(c);
+                    setModals(m => ({ ...m, mergeCard: true }));
+                }}
             />
           ))}
         </div>
