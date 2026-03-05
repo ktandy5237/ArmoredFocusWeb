@@ -1,0 +1,28 @@
+.standard-card-container {
+  background-color: var(--hubDarkColor);
+  border: 2px solid var(--hubBorder);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  color: white;
+  width: 100%;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.hub-card-color {
+  background-color: var(--hubDarkColor);
+  border: 2px solid var(--hubBorder);
+}
+
+.quest-card-color {
+  background-color: var(--questDarkColor);
+  border: 2px solid var(--questBorder);
+}
+.binder-card-color {
+  background-color: var(--binderDarkColor);
+  border: 2px solid var(--binderBorder);
+}
+.rules-card-color {
+  background-color: var(--rulesDarkColor);
+  border: 2px solid var(--rulesBorder);
+}

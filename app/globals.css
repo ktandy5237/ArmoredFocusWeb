@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+
+  /* --- Hub Colors --- */
+  --hubBackground: linear-gradient(180deg, #143278 0%, #050814 100%);
+  --hubColor: #143278;
+  --hubDarkColor: #07256b;
+  --hubLightColor: #8fb1ff;
+  --hubBorder: #6694ff;
+
+  /* --- Quest Colors --- */
+  --questBackground: linear-gradient(180deg, #144d36 0%, #05120b 100%);
+  --questColor: #2a4a3f;
+  --questDarkColor: #19382e;
+  --questBorder: #6abfa3;
+  --questInputBg: #d1fae5;
+  --questInputText: #064e3b;
+
+  /* --- Binder Colors --- */
+  --binderBackground: linear-gradient(180deg, #752a4a 0%, #2e0b36 100%);
+  --binderColor: #752a4a;
+  --binderDarkColor: #5d1836;
+  --binderBorder: #c85d8d;
+
+  /* --- Rules Colors --- */
+  --rulesBackground: linear-gradient(180deg, #362622 0%, #241713 100%);
+  --rulesColor: #362622;
+  --rulesDarkColor: #271a16;
+  --rulesBorder: #9e8174;
+
+  /* --- Other Colors --- */
+  --accentCyan: #06b6d4; /* Icon Color */
+  --accentSuccess: #34d399; /* Targeted Green */
+  --accentIdle: #93c5fd; /* Idle Blue */
+  --textMuted: #94a3b8; /* Label Grey */
+
+  /* --- Scroll / Paper Theme --- */
+  --scrollBorder: #803c13;
+  --scrollHeader: #e2cfb9;
+  --scrollBody: #f4e2cd;
+  --scrollText: #5d4037;
+  --scrollDot: #e6dcc9;
+  --scrollShadow: linear-gradient(
+    180deg,
+    rgba(74, 55, 40, 0) 0%,
+    rgba(74, 55, 40, 0.4) 100%
+  );
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: "Courier New", Courier, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* --background: #0a0a0a;
+    --foreground: #ededed; */
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-serif), serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif), serif;
+  font-weight: bold;
+}
+p {
+  font-family: var(--font-mono), monospace;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  width: 100vw;
+  height: 100vh;
+}
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  padding: 2rem;
+}
