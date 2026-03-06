@@ -131,7 +131,7 @@ export interface UserStats {
 //   Misc / UI Helpers
 // ────────────────────────────────────────────────
 
-export type ModalName =
+export type ModelName =
   | 'drawCard'
   | 'startQuest'
   | 'questResult'
@@ -140,8 +140,8 @@ export type ModalName =
   | 'levelTable'
   | 'modifyQuest';
 
-export interface ModalsState {
-  [key in ModalName]?: boolean;
+export interface ModelsState {
+  [key in ModelName]?: boolean;
 }
 
 export type View = 'hub' | 'quests' | 'binder' | 'rules';

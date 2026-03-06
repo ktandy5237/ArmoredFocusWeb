@@ -1,4 +1,4 @@
-// src/modals/QuestResultModal.tsx
+// src/Models/QuestResultModel.tsx
 import { useState, useMemo } from 'react';
 import {
   X, CheckCircle, ArrowRight, DollarSign, Calendar,
@@ -13,11 +13,11 @@ import { useQuestOperations } from '@/src/hooks/useQuestOperations';
 
 import type { Client, Rules } from '@/src/lib/types';
 
-interface QuestResultModalProps {
+interface QuestResultModelProps {
   client: Client;
   side: 'Client' | 'Business';
   questId: string;
-  action: 'Complete' | 'Continue';   // determines modal mode
+  action: 'Complete' | 'Continue';   // determines Model mode
   onClose: () => void;
   // Passed from parent (usually App.tsx)
   rules: Rules;
@@ -26,7 +26,7 @@ interface QuestResultModalProps {
   setUserStats: React.Dispatch<React.SetStateAction<any>>;
 }
 
-export default function QuestResultModal({
+export default function QuestResultModel({
   client,
   side,
   questId,
@@ -36,7 +36,7 @@ export default function QuestResultModal({
   setClients,
   setDailyLog,
   setUserStats,
-}: QuestResultModalProps) {
+}: QuestResultModelProps) {
   const { calculateFinalExp, finishQuest } = useQuestOperations({
     clients: [], // not needed here - we pass setters directly
     setClients,

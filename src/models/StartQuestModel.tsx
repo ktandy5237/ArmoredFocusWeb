@@ -1,4 +1,4 @@
-// src/modals/StartQuestModal.tsx
+// src/Models/StartQuestModel.tsx
 import { useState } from 'react';
 import { X, Calendar, FileText, AlertCircle, Sword } from 'lucide-react';
 
@@ -9,7 +9,7 @@ import { useQuestOperations } from '@/src/hooks/useQuestOperations';
 import type { Client, Rules } from '@/src/lib/types';
 import { generateId } from '../lib/utils';
 
-interface StartQuestModalProps {
+interface StartQuestModelProps {
   isStandalone?: boolean;           // true = standalone task, false = tied to a client
   client?: Client;                  // required if !isStandalone
   side?: 'Client' | 'Business';     // required if !isStandalone
@@ -20,7 +20,7 @@ interface StartQuestModalProps {
   setUserStats?: React.Dispatch<React.SetStateAction<any>>; // optional
 }
 
-export default function StartQuestModal({
+export default function StartQuestModel({
   isStandalone = false,
   client,
   side,
@@ -29,7 +29,7 @@ export default function StartQuestModal({
   setClients,
   setDailyLog,
   setUserStats,
-}: StartQuestModalProps) {
+}: StartQuestModelProps) {
   const { startQuest } = useQuestOperations({
     clients: [], // not directly used here
     setClients,

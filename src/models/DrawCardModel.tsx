@@ -1,4 +1,4 @@
-// src/modals/DrawCardModal.tsx
+// src/Models/DrawCardModel.tsx
 import { useState } from 'react';
 import {
   X, UserPlus, Briefcase, Layers, CheckCircle
@@ -10,13 +10,13 @@ import { generateId } from '@/src/lib/utils';
 
 import type { Client } from '@/src/lib/types'; // ← create this file if you want strong typing
 
-interface DrawCardModalProps {
+interface DrawCardModelProps {
   onClose: () => void;
   onSave: (newClient: Client) => void;
   rules: any; // ← your rules object (for new card XP)
 }
 
-export default function DrawCardModal({ onClose, onSave, rules }: DrawCardModalProps) {
+export default function DrawCardModel({ onClose, onSave, rules }: DrawCardModelProps) {
   const [primarySide, setPrimarySide] = useState<'Client' | 'Business'>('Client');
 
   const [newCardData, setNewCardData] = useState<any>({
