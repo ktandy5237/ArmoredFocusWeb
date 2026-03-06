@@ -18,9 +18,9 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",                      // ← add this (helps relative paths)
+    "baseUrl": ".",                           // helps relative paths
     "paths": {
-      "@/*": ["src/*"]                   // ← FIXED: points @ to src/
+      "@/*": ["src/*"]                        // FIXED: @ points to src/
     }
   },
   "include": [
