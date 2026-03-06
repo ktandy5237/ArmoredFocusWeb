@@ -1,7 +1,7 @@
 // src/hooks/useQuestOperations.ts
 import { useCallback } from 'react';
-import { generateId, getDaysOut } from '@/src/lib/utils';
-import type { Client, Quest, Rules, LogEntry, QuestTypeItem } from '@/src/lib/types';
+import { generateId, getDaysOut } from '@/lib/utils';
+import type { Client, Quest, Rules, LogEntry, QuestTypeItem } from '@/lib/types';
 
 interface UseQuestOperationsProps {
   clients: Client[];

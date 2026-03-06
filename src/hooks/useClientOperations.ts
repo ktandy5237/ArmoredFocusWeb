@@ -1,7 +1,7 @@
 // src/hooks/useClientOperations.ts
 import { useCallback } from 'react';
-import { generateId } from '@/src/lib/utils';
-import type { Client, LogEntry, Rules } from '@/src/lib/types';
+import { generateId } from '@/lib/utils';
+import type { Client, LogEntry, Rules } from '@/lib/types';
 
 interface UseClientOperationsProps {
   clients: Client[];

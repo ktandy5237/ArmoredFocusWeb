@@ -2,11 +2,11 @@
 import { JSX, useState } from 'react';
 import { Plus, Trash2, Edit2, X, Save, AlertCircle } from 'lucide-react';
 
-import { RPGButton } from '@/src/components/ui/RPGButton';
-import { THEME, METALLIC_SHADOW, METALLIC_FONT } from '@/src/lib/theme';
+import { RPGButton } from '@/components/ui/RPGButton';
+import { THEME, METALLIC_SHADOW, METALLIC_FONT } from '@/lib/theme';
 
-import type { Rules, RuleItem, Level } from '@/src/lib/types';
-import { useRulesOperations } from '@/src/hooks/useRulesOperations';
+import type { Rules, RuleItem, Level } from '@/lib/types';
+import { useRulesOperations } from '@/hooks/useRulesOperations';
 
 interface RulesViewProps {
   rules: Rules;

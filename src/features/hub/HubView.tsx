@@ -4,12 +4,12 @@ import {
   Scroll, Coins, UserPlus, Layers, Award, Target, Clock,
   Edit2, CheckCircle, AlertCircle
 } from 'lucide-react';
-import { RPGButton } from '@/src/components/ui/RPGButton';
-import ClientCard from '@/src/components/ClientCard/ClientCard'; // assuming extracted
-import { HUB_THEME, METALLIC_SHADOW, METALLIC_FONT } from '@/src/lib/theme';
-import { formatDateStandard } from '@/src/lib/utils';
-import type { Client, LogEntry } from '@/src/lib/types';
-import ScrollLog from '@/src/components/ScrollLog/Scrolllog';
+import { RPGButton } from '@/components/ui/RPGButton';
+import ClientCard from '@/components/ClientCard/ClientCard'; // assuming extracted
+import { HUB_THEME, METALLIC_SHADOW, METALLIC_FONT } from '@/lib/theme';
+import { formatDateStandard } from '@/lib/utils';
+import type { Client, LogEntry } from '@/lib/types';
+import ScrollLog from '@/components/ScrollLog/ScrollLog';
 
 interface HubViewProps {
   clients: Client[];

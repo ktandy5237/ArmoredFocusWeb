@@ -1,14 +1,13 @@
 // src/features/binder/BinderView.tsx
 import { useState, useMemo } from 'react';
 import {
-  Search, List, ChevronDown, ChevronUp, Plus, Upload, RotateCcw, Merge, X,
+  Search, List, ChevronDown, ChevronUp, Upload, 
   Book, Layers
 } from 'lucide-react';
 
-import { RPGButton } from '@/src/components/ui/RPGButton';
-import { BINDER_THEME } from '@/src/lib/theme';
-import { formatPhoneNumber } from '@/src/lib/utils';
-import ClientCard from '@/src/components/ClientCard/ClientCard';
+import { RPGButton } from '@/components/ui/RPGButton';
+import { BINDER_THEME } from '@/lib/theme';
+import ClientCard from '@/components/ClientCard/ClientCard';
 
 // ────────────────────────────────────────────────
 //   MAIN BINDER VIEW

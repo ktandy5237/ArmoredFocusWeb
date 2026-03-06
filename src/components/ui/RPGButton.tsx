@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes } from 'react';
-import { THEME, METALLIC_SHADOW, METALLIC_FONT } from '@/src/lib/theme';
+import { THEME, METALLIC_SHADOW, METALLIC_FONT } from '@/lib/theme';
 
 type Variant = 'primary' | 'action' | 'danger' | 'gold';
 

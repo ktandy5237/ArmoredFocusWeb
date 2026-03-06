@@ -18,8 +18,9 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",                      // ← add this (helps relative paths)
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["src/*"]                   // ← FIXED: points @ to src/
     }
   },
   "include": [
@@ -28,7 +29,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    "src/App.jsx"
   ],
   "exclude": ["node_modules"]
 }

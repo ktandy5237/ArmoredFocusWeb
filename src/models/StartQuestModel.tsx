@@ -2,11 +2,11 @@
 import { useState } from 'react';
 import { X, Calendar, FileText, AlertCircle, Sword } from 'lucide-react';
 
-import { RPGButton } from '@/src/components/ui/RPGButton';
-import { THEME } from '@/src/lib/theme';
-import { useQuestOperations } from '@/src/hooks/useQuestOperations';
+import { RPGButton } from '@/components/ui/RPGButton';
+import { THEME } from '@/lib/theme';
+import { useQuestOperations } from '@/hooks/useQuestOperations';
 
-import type { Client, Rules } from '@/src/lib/types';
+import type { Client, Rules } from '@/lib/types';
 import { generateId } from '../lib/utils';
 
 interface StartQuestModelProps {

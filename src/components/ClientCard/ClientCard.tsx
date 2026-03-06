@@ -5,9 +5,9 @@ import {
   Scroll, Sword, ChevronRight, ChevronLeft, Ban
 } from 'lucide-react';
 
-import { RPGButton } from '@/src/components/ui/RPGButton';
-import { RelationshipBar } from '@/src/components/ui/RelationshipBar';
-import { formatPhoneNumber, getDaysOut, formatDisplayDate } from '@/src/lib/utils';
+import { RPGButton } from '@/components/ui/RPGButton';
+import { RelationshipBar } from '@/components/ui/RelationshipBar';
+import { formatPhoneNumber, getDaysOut, formatDisplayDate } from '@/lib/utils';
 
 interface ClientCardProps {
   client: any;

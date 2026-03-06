@@ -1,7 +1,7 @@
 // src/components/ScrollLog.tsx
 import { useState } from 'react';
 import { Scroll, X, ChevronUp, ChevronDown, Search as SearchIcon } from 'lucide-react';
-import { formatDisplayDate } from '@/src/lib/utils';
+import { formatDisplayDate } from '@/lib/utils';
 
 interface ScrollLogProps {
   dailyLog: Array<{

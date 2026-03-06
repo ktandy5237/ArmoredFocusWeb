@@ -4,14 +4,14 @@ import {
   Sword, Search as SearchIcon,
   Map, AlertCircle, Clock} from 'lucide-react';
 
-import { RPGButton } from '@/src/components/ui/RPGButton';
-import ScrollLog from "@/src/components/ScrollLog/Scrolllog"
-import ClientCard from '@/src/components/ClientCard/ClientCard';
+import { RPGButton } from '@/components/ui/RPGButton';
+import ScrollLog from "@/components/ScrollLog/ScrollLog"
+import ClientCard from '@/components/ClientCard/ClientCard';
 
-import { QUEST_THEME } from '@/src/lib/theme';
+import { QUEST_THEME } from '@/lib/theme';
 
-import type { Client, LogEntry } from '@/src/lib/types';
-import { getDaysOut } from '@/src/lib/utils';
+import type { Client, LogEntry } from '@/lib/types';
+import { getDaysOut } from '@/lib/utils';
 
 interface QuestsViewProps {
   clients: Client[];

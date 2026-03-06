@@ -1,7 +1,7 @@
 // src/hooks/useRulesOperations.ts
 import { useCallback } from 'react';
-import { generateId } from '@/src/lib/utils';
-import type { Rules, RuleItem, Level } from '@/src/lib/types';
+import { generateId } from '@/lib/utils';
+import type { Rules, RuleItem, Level } from '@/lib/types';
 
 interface UseRulesOperationsProps {
   rules: Rules;

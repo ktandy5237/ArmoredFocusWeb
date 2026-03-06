@@ -1,7 +1,7 @@
 // src/hooks/useBonusProgress.ts
 import { useState, useCallback, useEffect } from 'react';
-import { generateId } from '@/src/lib/utils';
-import type { Rules, LogEntry } from '@/src/lib/types';
+import { generateId } from '@/lib/utils';
+import type { Rules, LogEntry } from '@/lib/types';
 
 interface BonusProgress {
   [bonusId: string]: {

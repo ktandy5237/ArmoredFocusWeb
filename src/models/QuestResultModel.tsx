@@ -2,17 +2,16 @@
 import { useState, useMemo } from 'react';
 import {
   X, CheckCircle, ArrowRight, DollarSign, Calendar,
-  AlertCircle, Clock, FileText,
+  AlertCircle, FileText,
   Sword
 } from 'lucide-react';
 
-import { RPGButton } from '@/src/components/ui/RPGButton';
-import { THEME } from '@/src/lib/theme';
-import { formatDisplayDate, getDaysOut } from '@/src/lib/utils';
-import { useQuestOperations } from '@/src/hooks/useQuestOperations';
+import { RPGButton } from '@/components/ui/RPGButton';
+import { formatDisplayDate, getDaysOut } from '@/lib/utils';
+import { useQuestOperations } from '@/hooks/useQuestOperations';
 
-import type { Client, Rules } from '@/src/lib/types';
-import Icon from '@/app/ReusableUI/Icons/PencilIcon';
+import type { Client, Rules } from '@/lib/types';
+import Icon from '@/ReusableUI/Icons/PencilIcon';
 
 interface QuestResultModelProps {
   client: Client;

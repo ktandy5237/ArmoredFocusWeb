@@ -4,11 +4,11 @@ import {
   X, UserPlus, Briefcase, Layers, CheckCircle
 } from 'lucide-react';
 
-import { RPGButton } from '@/src/components/ui/RPGButton';
-import { THEME } from '@/src/lib/theme';
-import { generateId } from '@/src/lib/utils';
+import { RPGButton } from '@/components/ui/RPGButton';
+import { THEME } from '@/lib/theme';
+import { generateId } from '@/lib/utils';
 
-import type { Client } from '@/src/lib/types'; // ← create this file if you want strong typing
+import type { Client } from '@/lib/types'; // ← create this file if you want strong typing
 
 interface DrawCardModelProps {
   onClose: () => void;
