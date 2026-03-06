@@ -31,6 +31,12 @@ export interface Quest {
   completionType?: string;
 }
 
+// Add near the top or bottom of types.ts
+
+export interface QuestTypeItem extends RuleItem {
+  exp: number;           // make exp REQUIRED here
+}
+
 export interface ClientSide {
   notes: QuestNote[];
   logs: LogEntry[];
@@ -140,7 +146,7 @@ export type ModelName =
   | 'levelTable'
   | 'modifyQuest';
 
-export interface ModelsState {
+export type ModelsState = {
   [key in ModelName]?: boolean;
 }
 

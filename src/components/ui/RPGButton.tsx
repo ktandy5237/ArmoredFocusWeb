@@ -1,4 +1,3 @@
-// src/components/RPGButton.tsx
 import { ButtonHTMLAttributes } from 'react';
 import { THEME, METALLIC_SHADOW, METALLIC_FONT } from '@/src/lib/theme';
 

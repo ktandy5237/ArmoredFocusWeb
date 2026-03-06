@@ -4,21 +4,19 @@ import {
   Scroll, Coins, UserPlus, Layers, Award, Target, Clock,
   Edit2, CheckCircle, AlertCircle
 } from 'lucide-react';
-
 import { RPGButton } from '@/src/components/ui/RPGButton';
-import { ScrollLog } from '@/src/components/ScrollLog/ScrollLog';
 import ClientCard from '@/src/components/ClientCard/ClientCard'; // assuming extracted
 import { HUB_THEME, METALLIC_SHADOW, METALLIC_FONT } from '@/src/lib/theme';
 import { formatDateStandard } from '@/src/lib/utils';
-
 import type { Client, LogEntry } from '@/src/lib/types';
+import ScrollLog from '@/src/components/ScrollLog/Scrolllog';
 
 interface HubViewProps {
   clients: Client[];
   dailyLog: LogEntry[];
   userStats: { name: string; exp: number; level: number };
   setUserStats: React.Dispatch<React.SetStateAction<{ name: string; exp: number; level: number }>>;
-  setModals: React.Dispatch<React.SetStateAction<any>>;
+  setModels: React.Dispatch<React.SetStateAction<any>>;
   setExpandedCardId: (id: string | null) => void;
   expandedCardId: string | null;
   // Optional: pass setClients, rules, etc. if needed for actions
@@ -29,7 +27,7 @@ export default function HubView({
   dailyLog,
   userStats,
   setUserStats,
-  setModals,
+  setModels,
   setExpandedCardId,
   expandedCardId,
 }: HubViewProps) {
@@ -115,7 +113,7 @@ export default function HubView({
         {/* Quick Actions */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           <RPGButton
-            onClick={() => setModals(m => ({ ...m, startQuest: true }))}
+            onClick={() => setModels((m: any) => ({ ...m, startQuest: true }))}
             className="py-6 text-lg flex items-center justify-center gap-3 shadow-xl"
           >
             <Coins size={24} className="text-emerald-300" />
@@ -123,7 +121,7 @@ export default function HubView({
           </RPGButton>
 
           <RPGButton
-            onClick={() => setModals(m => ({ ...m, startQuest: true }))} // can pass isStandalone=true in real impl
+            onClick={() => setModels((m: any) => ({ ...m, startQuest: true }))} // can pass isStandalone=true in real impl
             variant="gold"
             className="py-6 text-lg flex items-center justify-center gap-3 shadow-xl"
           >
@@ -132,7 +130,7 @@ export default function HubView({
           </RPGButton>
 
           <RPGButton
-            onClick={() => setModals(m => ({ ...m, drawCard: true }))}
+            onClick={() => setModels((m: any) => ({ ...m, drawCard: true }))}
             className="py-6 text-lg flex items-center justify-center gap-3 shadow-xl"
           >
             <Layers size={24} className="text-amber-300" />

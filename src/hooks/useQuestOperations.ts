@@ -1,7 +1,7 @@
 // src/hooks/useQuestOperations.ts
 import { useCallback } from 'react';
 import { generateId, getDaysOut } from '@/src/lib/utils';
-import type { Client, Quest, Rules, LogEntry } from '@/src/lib/types';
+import type { Client, Quest, Rules, LogEntry, QuestTypeItem } from '@/src/lib/types';
 
 interface UseQuestOperationsProps {
   clients: Client[];
@@ -43,10 +43,10 @@ export function useQuestOperations({
   // ────────────────────────────────────────────────
   //  Start a new quest on a client card
   // ────────────────────────────────────────────────
-  const startQuest = useCallback((
+const startQuest = useCallback((
     clientId: string,
     side: 'Client' | 'Business',
-    questType: { id: string; name: string; exp: number },
+    questType: QuestTypeItem,           // ← use the new type
     dueDate: string,
     note?: string
   ) => {

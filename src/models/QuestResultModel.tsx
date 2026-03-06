@@ -12,6 +12,7 @@ import { formatDisplayDate, getDaysOut } from '@/src/lib/utils';
 import { useQuestOperations } from '@/src/hooks/useQuestOperations';
 
 import type { Client, Rules } from '@/src/lib/types';
+import Icon from '@/app/ReusableUI/Icons/PencilIcon';
 
 interface QuestResultModelProps {
   client: Client;
@@ -117,7 +118,7 @@ export default function QuestResultModel({
         {/* Header */}
         <div className={`p-5 border-b border-[#d4c5a9] flex justify-between items-center ${action === 'Complete' ? 'bg-emerald-800' : 'bg-blue-800'} text-white`}>
           <div className="flex items-center gap-3">
-            <icon size={28} />
+            <Icon size={28} />
             <h2 className="font-serif font-bold text-xl">{title}</h2>
           </div>
           <button

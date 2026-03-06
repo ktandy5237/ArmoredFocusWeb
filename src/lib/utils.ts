@@ -1,4 +1,3 @@
-// src/lib/utils.ts
 // ────────────────────────────────────────────────
 // Reusable utility functions: IDs, dates, formatting, phone, etc.
 // ────────────────────────────────────────────────
